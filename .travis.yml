@@ -1,0 +1,9 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t zcl/docker-react -f Dockerfile.dev .
+  # run the test to see if the image successfully built.
+script:
+  - docker run -e CI=true zcl/docker-react npm run test
